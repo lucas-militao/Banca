@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtRevistaNome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toEndOf="@+id/txtRevistaId"
+        android:textSize="18dp"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Mundo Estranho" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtRevistaId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="32dp"
+        android:textSize="18dp"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="1" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
