@@ -7,10 +7,9 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "revista_table")
 data class Revista(
-    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "revistaID") val revistaID: Int,
-    @ForeignKey(entity = Edicao::class,
-                parentColumns = arrayOf("edicaoID"),
-                childColumns = arrayOf("edicaoID"),
-                onDelete = ForeignKey.CASCADE) @ColumnInfo(name = "edicaoID") val edicaoID: Int,
     @ColumnInfo(name = "revistaNome") val revistaNome: String
-    )
+)
+
+{
+    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "revistaID") var revistaID: Int = 0
+}

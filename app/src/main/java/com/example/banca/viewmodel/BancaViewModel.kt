@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.banca.model.entity.Artigo
 import com.example.banca.model.entity.Edicao
 import com.example.banca.model.entity.Revista
+import com.example.banca.model.joinclasses.RevistaEdicao
 import com.example.banca.repository.BancaRepository
 import com.example.banca.roomdatabase.BancaRoomDatabase
 import kotlinx.coroutines.launch
@@ -17,7 +18,7 @@ class BancaViewModel(application: Application): AndroidViewModel(application) {
 
     val allRevistas: LiveData<List<Revista>>
     val allArtigos: LiveData<List<Artigo>>
-//    val allArtigosEdicoes: LiveData<List<Any>>
+    var allRevistaEdicoes: LiveData<List<RevistaEdicao>>? = null
 
     init {
 
@@ -29,8 +30,11 @@ class BancaViewModel(application: Application): AndroidViewModel(application) {
 
         allRevistas = repository.allRevistas
         allArtigos = repository.allArtigos
-//        allArtigosEdicoes = repository.allEdicoesArtigos
 
+    }
+
+    fun queryRevistaEdicoes(id: Int) {
+        allRevistaEdicoes = repository.queryRevistaEdicoes(id)
     }
 
     fun insertRevista(revista: Revista) = viewModelScope.launch {

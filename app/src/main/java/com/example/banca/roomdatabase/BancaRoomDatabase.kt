@@ -15,7 +15,10 @@ import com.example.banca.model.entity.Revista
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-@Database(entities = arrayOf(Revista::class, Artigo::class, Edicao::class, ArtigoEdicao::class), version = 1)
+@Database(
+        entities = [Revista::class, Artigo::class, Edicao::class, ArtigoEdicao::class],
+        version = 4,
+        exportSchema = false)
 public abstract class BancaRoomDatabase : RoomDatabase() {
 
     abstract fun artigoDao(): ArtigoDAO
@@ -31,6 +34,7 @@ public abstract class BancaRoomDatabase : RoomDatabase() {
             INSTANCE?.let { database ->
 
                 scope.launch {
+
                     var revistaDAO = database.revistaDao()
                     var artigoDAO = database.artigoDao()
                     var edicaoDAO = database.edicaoDao()
@@ -38,19 +42,32 @@ public abstract class BancaRoomDatabase : RoomDatabase() {
 //                    Delete all the magazines
                     revistaDAO.deleteAll()
 
-                    var edicao1 = Edicao(1)
-                    edicaoDAO.insert(edicao1)
-                    var edicao2 = Edicao(2)
-                    edicaoDAO.insert(edicao2)
-                    var edicao3 = Edicao(3)
-                    edicaoDAO.insert(edicao3)
+                    var edicao = Edicao("Filmes de terror", 1)
+                    edicaoDAO.insert(edicao)
+                    edicao = Edicao("Filmes de terror", 1)
+                    edicaoDAO.insert(edicao)
+                    edicao = Edicao("Histórias bizarras", 1)
+                    edicaoDAO.insert(edicao)
+                    edicao = Edicao("História", 2)
+                    edicaoDAO.insert(edicao)
+                    edicao = Edicao("Curiosidades", 3)
+                    edicaoDAO.insert(edicao)
 
-                    var revista1 = Revista(1,1,"mundo estranho")
+                    var revista1 = Revista("mundo estranho")
                     revistaDAO.insert(revista1)
-                    var revista2 = Revista(2,2,"veja")
+                    var revista2 = Revista("veja")
                     revistaDAO.insert(revista2)
-                    var revista3 = Revista(3,3,"saúde")
+                    var revista3 = Revista("saúde")
                     revistaDAO.insert(revista3)
+
+                    artigoDAO.deleteAll()
+
+                    var artigo1 = Artigo("tecnologia para animais")
+                    artigoDAO.insert(artigo1)
+                    var artigo2 = Artigo("filmes que entretem crianças")
+                    artigoDAO.insert(artigo2)
+                    var artigo3 = Artigo("falar sobre sexo nas escolas")
+                    artigoDAO.insert(artigo3)
 
                 }
 
@@ -66,7 +83,7 @@ public abstract class BancaRoomDatabase : RoomDatabase() {
         private var INSTANCE: BancaRoomDatabase? = null
 
         fun getDatabase(context: Context,
-                        scope: CoroutineScope) : BancaRoomDatabase {
+                        scope: CoroutineScope): BancaRoomDatabase {
 
             val tempInstance = INSTANCE
             if (tempInstance != null) {
@@ -80,6 +97,7 @@ public abstract class BancaRoomDatabase : RoomDatabase() {
                         "banca_database"
                 )
                         .addCallback(BancaDatabaseCallback(scope))
+                        .fallbackToDestructiveMigration()
                         .build()
                 INSTANCE = instance
 

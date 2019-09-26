@@ -6,6 +6,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.banca.model.entity.Revista
+import com.example.banca.model.joinclasses.RevistaEdicao
 
 @Dao
 interface RevistaDAO {
@@ -13,8 +14,8 @@ interface RevistaDAO {
     @Query("Select * From revista_table")
     fun getAllRevista() : LiveData<List<Revista>>
 
-//    @Query("Select * From revista_table as rt, edicao_table as et Where rt.edicaoID = et.edicaoID")
-//    fun getAllRevistaEdicao() : LiveData<List<Any>>
+    @Query("Select * From revista_table where revistaID == :id")
+    fun getAllRevistaEdicoes(id: Int) : LiveData<RevistaEdicao>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(revista: Revista)

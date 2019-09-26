@@ -7,20 +7,20 @@
     android:layout_height="wrap_content">
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/txtRevistaNome"
+        android:id="@+id/campo2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="32dp"
-        app:layout_constraintStart_toEndOf="@+id/txtRevistaId"
+        app:layout_constraintStart_toEndOf="@+id/campo1"
         android:textSize="18dp"
         android:textColor="@color/colorPrimary"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Mundo Estranho" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/txtRevistaId"
+        android:id="@+id/campo1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -31,5 +31,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="1" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/campo3"
+        android:textSize="18dp"
+        android:textColor="@color/colorPrimary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toEndOf="@+id/campo2"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:text="2" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/campo4"
+        android:textSize="18dp"
+        android:textColor="@color/colorPrimary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toEndOf="@+id/campo3"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:text="Curiosidades" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

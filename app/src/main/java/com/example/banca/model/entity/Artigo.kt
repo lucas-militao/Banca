@@ -6,6 +6,9 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "artigo_table")
 data class Artigo(
-    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "artigoID") val artigoID: Int,
     @ColumnInfo(name = "artigoNome") val artigoNome: String
 )
+
+{
+    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "artigoID") var artigoID: Int = 0
+}

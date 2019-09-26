@@ -17,12 +17,12 @@ class RevistaListAdapter internal constructor(
     private var revistas = emptyList<Revista>()
 
     inner class RevistaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val revistaIdTxt: TextView = itemView.findViewById(R.id.txtRevistaId)
-        val revistaNomeTxt: TextView = itemView.findViewById(R.id.txtRevistaNome)
+        val revistaIdTxt: TextView = itemView.findViewById(R.id.campo1)
+        val revistaNomeTxt: TextView = itemView.findViewById(R.id.campo2)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RevistaViewHolder {
-        val itemView = inflater.inflate(R.layout.revista_view_holder, parent, false)
+        val itemView = inflater.inflate(R.layout.view_holder, parent, false)
         return RevistaViewHolder(itemView)
     }
 

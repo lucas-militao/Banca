@@ -14,6 +14,7 @@ data class ArtigoEdicao(
                 childColumns = arrayOf("artigoID"),
                 onDelete = ForeignKey.CASCADE
         ) @ColumnInfo(name = "artigoID") val artigoID : Int,
+
         @ForeignKey(
                 entity = Edicao::class,
                 parentColumns = arrayOf("edicaoID"),
