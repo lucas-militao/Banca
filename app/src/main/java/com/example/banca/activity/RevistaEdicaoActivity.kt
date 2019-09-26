@@ -45,7 +45,7 @@ class RevistaEdicaoActivity : AppCompatActivity() {
     private fun subscribeUI() {
 
         with(bancaViewModel) {
-            allRevistaEdicoes?.observe(this@RevistaEdicaoActivity, Observer {
+            revistaEdicoes?.observe(this@RevistaEdicaoActivity, Observer {
                 revistaEdicaoAdapter.setList(it)
             })
         }

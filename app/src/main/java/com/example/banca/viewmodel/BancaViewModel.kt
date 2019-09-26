@@ -3,6 +3,7 @@ package com.example.banca.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.banca.model.entity.Artigo
 import com.example.banca.model.entity.Edicao
@@ -18,7 +19,9 @@ class BancaViewModel(application: Application): AndroidViewModel(application) {
 
     val allRevistas: LiveData<List<Revista>>
     val allArtigos: LiveData<List<Artigo>>
-    var allRevistaEdicoes: LiveData<List<RevistaEdicao>>? = null
+
+    private val _revistaEdicoes: MutableLiveData<RevistaEdicao> //PORQUE NÃO FUNCIONA?????????????
+    val revistaEdicoes: LiveData<RevistaEdicao>
 
     init {
 
@@ -31,10 +34,12 @@ class BancaViewModel(application: Application): AndroidViewModel(application) {
         allRevistas = repository.allRevistas
         allArtigos = repository.allArtigos
 
+        _revistaEdicoes = MutableLiveData<RevistaEdicao>()
+        revistaEdicoes = _revistaEdicoes
     }
 
     fun queryRevistaEdicoes(id: Int) {
-        allRevistaEdicoes = repository.queryRevistaEdicoes(id)
+        _revistaEdicoes.value = repository.queryRevistaEdicao(id).value
     }
 
     fun insertRevista(revista: Revista) = viewModelScope.launch {
