@@ -32,20 +32,12 @@ class RevistaEdicaoActivity : AppCompatActivity() {
         revistaEdicaoAdapter = RevistaEdicaoAdapter(this)
 
         recyclerList.adapter = revistaEdicaoAdapter
-
-        searchButton.setOnClickListener {
-            try {
-                bancaViewModel.queryRevistaEdicoes(searchField.text.toString().toInt())
-            } catch (e: Exception) {
-                toast("Digite um id válido")
-            }
-        }
     }
 
     private fun subscribeUI() {
 
         with(bancaViewModel) {
-            revistaEdicoes?.observe(this@RevistaEdicaoActivity, Observer {
+            allRevistasEdicoes.observe(this@RevistaEdicaoActivity, Observer {
                 revistaEdicaoAdapter.setList(it)
             })
         }

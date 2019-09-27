@@ -42,6 +42,15 @@ public abstract class BancaRoomDatabase : RoomDatabase() {
 //                    Delete all the magazines
                     revistaDAO.deleteAll()
 
+                    var revista1 = Revista("mundo estranho")
+                    revistaDAO.insert(revista1)
+                    var revista2 = Revista("veja")
+                    revistaDAO.insert(revista2)
+                    var revista3 = Revista("saúde")
+                    revistaDAO.insert(revista3)
+
+                    edicaoDAO.deleteAll()
+
                     var edicao = Edicao("Filmes de terror", 1)
                     edicaoDAO.insert(edicao)
                     edicao = Edicao("Filmes de terror", 1)
@@ -52,13 +61,6 @@ public abstract class BancaRoomDatabase : RoomDatabase() {
                     edicaoDAO.insert(edicao)
                     edicao = Edicao("Curiosidades", 3)
                     edicaoDAO.insert(edicao)
-
-                    var revista1 = Revista("mundo estranho")
-                    revistaDAO.insert(revista1)
-                    var revista2 = Revista("veja")
-                    revistaDAO.insert(revista2)
-                    var revista3 = Revista("saúde")
-                    revistaDAO.insert(revista3)
 
                     artigoDAO.deleteAll()
 

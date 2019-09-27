@@ -16,9 +16,3 @@ class RevistaEdicao {
     var edicao: List<Edicao>? = null
 
 }
-
-
-//val revistaID: Int,
-//val revistaNome: String,
-//val edicaoID: Int,
-//val edicaoNome: String

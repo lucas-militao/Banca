@@ -13,7 +13,7 @@ class RevistaEdicaoAdapter
 internal constructor(context: Context) :
         RecyclerView.Adapter<RevistaEdicaoAdapter.RevistaEdicaoViewHolder>() {
 
-    private var revistaEdicao = RevistaEdicao()
+    private var revistasEdicoes = emptyList<RevistaEdicao>()
     private val inflater: LayoutInflater = LayoutInflater.from(context)
 
     inner class RevistaEdicaoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -28,27 +28,21 @@ internal constructor(context: Context) :
         return RevistaEdicaoViewHolder(layoutInflater)
     }
 
-    override fun getItemCount(): Int {
-        try {
-            return revistaEdicao?.edicao?.size!!
-        } catch (e : Exception) {
-            return 0
-        }
-    }
+    override fun getItemCount(): Int = revistasEdicoes.size
 
     override fun onBindViewHolder(holder: RevistaEdicaoViewHolder, position: Int) {
 
-        val current = revistaEdicao.edicao?.get(position)
+        val current = revistasEdicoes[position]
 
-        holder.coluna1.text = revistaEdicao.revista?.revistaID.toString()
-        holder.coluna2.text = revistaEdicao.revista?.revistaNome
-        holder.coluna3.text = current?.edicaoID.toString()
-        holder.coluna4.text = current?.edicaoNome
+        holder.coluna1.text = current.revista?.revistaID.toString()
+        holder.coluna2.text = current.revista?.revistaNome
+        holder.coluna3.text = current.edicao?.get(0)?.edicaoID.toString()
+        holder.coluna4.text = current.edicao?.get(0)?.edicaoNome
 
     }
 
-    fun setList(revistaEdicao: RevistaEdicao) {
-        this.revistaEdicao = revistaEdicao
+    fun setList(revistasEdicoes: List<RevistaEdicao>) {
+        this.revistasEdicoes = revistasEdicoes
         notifyDataSetChanged()
     }
 }

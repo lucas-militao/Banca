@@ -15,6 +15,9 @@ class BancaRepository (private val artigoDAO: ArtigoDAO,
 
     val allArtigos: LiveData<List<Artigo>> = artigoDAO.getAllArtigo()
     val allRevistas: LiveData<List<Revista>> = revistaDAO.getAllRevista()
+    val allEdicoes: LiveData<List<Edicao>> = edicaoDAO.getAllEdicao()
+
+    val allRevistasEdicoes: LiveData<List<RevistaEdicao>> = revistaDAO.getAllRevistasEdicoes()
 
     suspend fun insertRevista(revista: Revista) {
         revistaDAO.insert(revista)
@@ -26,10 +29,6 @@ class BancaRepository (private val artigoDAO: ArtigoDAO,
 
     suspend fun insertEdicao(edicao: Edicao) {
         edicaoDAO.insert(edicao)
-    }
-
-    fun queryRevistaEdicao(id: Int) : LiveData<RevistaEdicao>{
-        return revistaDAO.getAllRevistaEdicoes(id)
     }
 
 }

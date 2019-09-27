@@ -14,8 +14,8 @@ interface RevistaDAO {
     @Query("Select * From revista_table")
     fun getAllRevista() : LiveData<List<Revista>>
 
-    @Query("Select * From revista_table where revistaID == :id")
-    fun getAllRevistaEdicoes(id: Int) : LiveData<RevistaEdicao>
+    @Query("Select * From revista_table")
+    fun getAllRevistasEdicoes() : LiveData<List<RevistaEdicao>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(revista: Revista)

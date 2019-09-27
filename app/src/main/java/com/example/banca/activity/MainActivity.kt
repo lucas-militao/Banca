@@ -5,6 +5,7 @@ import android.os.Bundle
 import com.example.banca.R
 import com.example.banca.fragment.ArtigosFragment
 import com.example.banca.fragment.EdicoesArtigosFragment
+import com.example.banca.fragment.EdicoesFragment
 import com.example.banca.fragment.RevistasFragment
 import com.example.banca.inTransaction
 import com.example.banca.model.entity.Revista
@@ -52,7 +53,7 @@ class MainActivity : AppCompatActivity() {
 
                     supportFragmentManager.inTransaction {
 
-                        replace(R.id.fragmentContainer, EdicoesArtigosFragment())
+                        replace(R.id.fragmentContainer, EdicoesFragment())
 
                     }
 
