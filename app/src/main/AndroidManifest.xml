@@ -23,6 +23,18 @@
             android:screenOrientation="portrait"
             />
 
+        <activity
+                android:name=".activity.EdicaoArtigosActivity"
+                android:theme="@style/Theme.MaterialComponents"
+                android:screenOrientation="portrait"
+        />
+
+        <activity
+                android:name=".activity.RevistaArtigosActivity"
+                android:theme="@style/Theme.MaterialComponents"
+                android:screenOrientation="portrait"
+        />
+
     </application>
 
 </manifest>

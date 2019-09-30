@@ -6,6 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.banca.model.dao.ArtigoDAO
+import com.example.banca.model.dao.ArtigoEdicaoDao
 import com.example.banca.model.dao.EdicaoDAO
 import com.example.banca.model.dao.RevistaDAO
 import com.example.banca.model.entity.Artigo
@@ -24,6 +25,7 @@ public abstract class BancaRoomDatabase : RoomDatabase() {
     abstract fun artigoDao(): ArtigoDAO
     abstract fun edicaoDao(): EdicaoDAO
     abstract fun revistaDao(): RevistaDAO
+    abstract fun artigoEdicaoDao(): ArtigoEdicaoDao
 
     private class BancaDatabaseCallback(
             private val scope: CoroutineScope

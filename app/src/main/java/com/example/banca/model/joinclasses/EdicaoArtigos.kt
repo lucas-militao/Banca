@@ -1,8 +1,17 @@
 package com.example.banca.model.joinclasses
 
-class EdicaoArtigos(
-        var edicaoID: Int,
-        var edicaoNome: String,
-        var artigoID: Int,
-        var artigoNome: String
-)
+import androidx.room.Embedded
+import androidx.room.Relation
+import com.example.banca.model.entity.Artigo
+import com.example.banca.model.entity.ArtigoEdicao
+import com.example.banca.model.entity.Edicao
+
+class EdicaoArtigos {
+
+
+        @Embedded
+        lateinit var edicao: Edicao
+
+        @Embedded
+        var artigo: Artigo? = null
+}

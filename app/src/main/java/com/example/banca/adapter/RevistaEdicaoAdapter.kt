@@ -7,13 +7,15 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.banca.R
+import com.example.banca.model.entity.Edicao
 import com.example.banca.model.joinclasses.RevistaEdicao
+import java.lang.Exception
 
 class RevistaEdicaoAdapter
 internal constructor(context: Context) :
         RecyclerView.Adapter<RevistaEdicaoAdapter.RevistaEdicaoViewHolder>() {
 
-    private var revistasEdicoes = emptyList<RevistaEdicao>()
+    private var revistaEdicoes = RevistaEdicao()
     private val inflater: LayoutInflater = LayoutInflater.from(context)
 
     inner class RevistaEdicaoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -28,21 +30,25 @@ internal constructor(context: Context) :
         return RevistaEdicaoViewHolder(layoutInflater)
     }
 
-    override fun getItemCount(): Int = revistasEdicoes.size
-
-    override fun onBindViewHolder(holder: RevistaEdicaoViewHolder, position: Int) {
-
-        val current = revistasEdicoes[position]
-
-        holder.coluna1.text = current.revista?.revistaID.toString()
-        holder.coluna2.text = current.revista?.revistaNome
-        holder.coluna3.text = current.edicao?.get(0)?.edicaoID.toString()
-        holder.coluna4.text = current.edicao?.get(0)?.edicaoNome
-
+    override fun getItemCount(): Int {
+        try {
+            return revistaEdicoes.edicao?.size!!
+        } catch (e: Exception) {
+            return -1
+        }
     }
 
-    fun setList(revistasEdicoes: List<RevistaEdicao>) {
-        this.revistasEdicoes = revistasEdicoes
+    override fun onBindViewHolder(holder: RevistaEdicaoViewHolder, position: Int) {
+        val current = revistaEdicoes.edicao
+
+        holder.coluna1.text = revistaEdicoes.revista?.revistaID.toString()
+        holder.coluna2.text = revistaEdicoes.revista?.revistaNome.toString()
+        holder.coluna3.text = current?.get(position)?.edicaoID.toString()
+        holder.coluna4.text = current?.get(position)?.edicaoNome
+    }
+
+    fun setList(revistasEdicoes: RevistaEdicao) {
+        this.revistaEdicoes = revistasEdicoes
         notifyDataSetChanged()
     }
 }
