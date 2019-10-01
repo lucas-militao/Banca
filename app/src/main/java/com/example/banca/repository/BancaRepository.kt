@@ -6,6 +6,7 @@ import com.example.banca.model.dao.ArtigoEdicaoDao
 import com.example.banca.model.dao.EdicaoDAO
 import com.example.banca.model.dao.RevistaDAO
 import com.example.banca.model.entity.Artigo
+import com.example.banca.model.entity.ArtigoEdicao
 import com.example.banca.model.entity.Edicao
 import com.example.banca.model.entity.Revista
 import com.example.banca.model.joinclasses.EdicaoArtigos
@@ -19,6 +20,7 @@ class BancaRepository (private val artigoDAO: ArtigoDAO,
     val allArtigos: LiveData<List<Artigo>> = artigoDAO.getAllArtigo()
     val allRevistas: LiveData<List<Revista>> = revistaDAO.getAllRevista()
     val allEdicoes: LiveData<List<Edicao>> = edicaoDAO.getAllEdicao()
+    val allArtigosEdicao: LiveData<List<ArtigoEdicao>> = artigoEdicaoDAO.allArtigoEdicao()
 
     suspend fun insertRevista(revista: Revista) {
         revistaDAO.insert(revista)
@@ -36,8 +38,8 @@ class BancaRepository (private val artigoDAO: ArtigoDAO,
         return revistaDAO.getAllRevistasEdicoesById(id)
     }
 
-    fun queryEdicaoArtigos(id: Int) : LiveData<EdicaoArtigos> {
-        return artigoEdicaoDAO.queryEdicaoArtigosById(id)
+    fun queryEdicaoArtigos(id: Int) : LiveData<List<Artigo>> {
+        return artigoDAO.queryArtigosFromEdicaoByID(id)
     }
 
 }

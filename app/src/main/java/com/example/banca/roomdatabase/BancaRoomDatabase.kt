@@ -40,6 +40,7 @@ public abstract class BancaRoomDatabase : RoomDatabase() {
                     var revistaDAO = database.revistaDao()
                     var artigoDAO = database.artigoDao()
                     var edicaoDAO = database.edicaoDao()
+                    var artigoEdicaoDAO = database.artigoEdicaoDao()
 
 //                    Delete all the magazines
                     revistaDAO.deleteAll()
@@ -55,8 +56,6 @@ public abstract class BancaRoomDatabase : RoomDatabase() {
 
                     var edicao = Edicao("Filmes de terror", 1)
                     edicaoDAO.insert(edicao)
-                    edicao = Edicao("Filmes de terror", 1)
-                    edicaoDAO.insert(edicao)
                     edicao = Edicao("Histórias bizarras", 1)
                     edicaoDAO.insert(edicao)
                     edicao = Edicao("História", 2)
@@ -66,12 +65,25 @@ public abstract class BancaRoomDatabase : RoomDatabase() {
 
                     artigoDAO.deleteAll()
 
-                    var artigo1 = Artigo("tecnologia para animais")
-                    artigoDAO.insert(artigo1)
-                    var artigo2 = Artigo("filmes que entretem crianças")
-                    artigoDAO.insert(artigo2)
-                    var artigo3 = Artigo("falar sobre sexo nas escolas")
-                    artigoDAO.insert(artigo3)
+                    var artigo = Artigo("tecnologia para animais")
+                    artigoDAO.insert(artigo)
+                    artigo = Artigo("filmes que entretem crianças")
+                    artigoDAO.insert(artigo)
+                    artigo = Artigo("falar sobre sexo nas escolas")
+                    artigoDAO.insert(artigo)
+                    artigo = Artigo("Quem descobriu o Brasil?")
+                    artigoDAO.insert(artigo)
+                    artigo = Artigo("Golfinhos tarados e asassinos")
+                    artigoDAO.insert(artigo)
+
+                    var artigoEdicao = ArtigoEdicao(1,2)
+                    artigoEdicaoDAO.insertArtigoEdicao(artigoEdicao)
+                    artigoEdicao = ArtigoEdicao(2,3)
+                    artigoEdicaoDAO.insertArtigoEdicao(artigoEdicao)
+                    artigoEdicao = ArtigoEdicao(3,3)
+                    artigoEdicaoDAO.insertArtigoEdicao(artigoEdicao)
+                    artigoEdicao = ArtigoEdicao(4,3)
+                    artigoEdicaoDAO.insertArtigoEdicao(artigoEdicao)
 
                 }
 

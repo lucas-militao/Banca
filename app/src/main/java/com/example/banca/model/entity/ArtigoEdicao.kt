@@ -17,10 +17,8 @@ import androidx.room.PrimaryKey
                         childColumns = ["edicaoID"],
                         onDelete = ForeignKey.CASCADE)
         ])
-class ArtigoEdicao {
-        var artigoID: Int = 0
-        var edicaoID: Int = 0
-}
+class ArtigoEdicao(@ColumnInfo(name = "artigoID") var artigoID: Int,
+                   @ColumnInfo(name = "edicaoID") var edicaoID: Int)
 
 
 

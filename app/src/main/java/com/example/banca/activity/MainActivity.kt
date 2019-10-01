@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.banca.R
 import com.example.banca.fragment.ArtigosFragment
-import com.example.banca.fragment.EdicoesArtigosFragment
 import com.example.banca.fragment.EdicoesFragment
 import com.example.banca.fragment.RevistasFragment
 import com.example.banca.inTransaction

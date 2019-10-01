@@ -7,10 +7,8 @@ import com.example.banca.model.entity.ArtigoEdicao
 import com.example.banca.model.entity.Edicao
 
 class EdicaoArtigos {
-
-
-        @Embedded
-        lateinit var edicao: Edicao
+        @Embedded (prefix = "edicao_")
+        var edicao: Edicao? = null
 
         @Embedded
         var artigo: Artigo? = null

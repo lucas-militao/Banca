@@ -16,6 +16,13 @@ interface ArtigoDAO{
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(artigo: Artigo)
 
+    @Query("""Select distinct * from artigo_table
+        INNER JOIN artigo_edicao_table ON artigo_table.artigoID = artigo_edicao_table.edicaoID
+        INNER JOIN edicao_table ON edicao_table.edicaoID = artigo_edicao_table.edicaoID
+        WHERE artigo_edicao_table.edicaoID = :id
+    """)
+    fun queryArtigosFromEdicaoByID(id: Int) : LiveData<List<Artigo>>
+
     @Query("Delete from artigo_table")
     suspend fun deleteAll()
 

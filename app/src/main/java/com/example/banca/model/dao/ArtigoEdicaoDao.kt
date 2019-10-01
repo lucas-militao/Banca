@@ -14,7 +14,7 @@ interface ArtigoEdicaoDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertArtigoEdicao(artigoEdicao: ArtigoEdicao)
 
-    @Query("Select * From artigo_edicao_table Where artigoID = :id")
-    fun queryEdicaoArtigosById(id: Int): LiveData<EdicaoArtigos>
+    @Query("Select * from artigo_edicao_table")
+    fun allArtigoEdicao() : LiveData<List<ArtigoEdicao>>
 
 }

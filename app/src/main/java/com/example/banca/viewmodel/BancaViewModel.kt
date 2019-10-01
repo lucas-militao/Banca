@@ -20,11 +20,13 @@ class BancaViewModel(application: Application): AndroidViewModel(application) {
     val allArtigos: LiveData<List<Artigo>>
     val allEdicoes: LiveData<List<Edicao>>
 
+    val allArtigosFromEdicao: LiveData<List<ArtigoEdicao>>
+
     var allRevistaEdicoes: MediatorLiveData<RevistaEdicao> = MediatorLiveData()
     private var _allRevistaEdicoes: LiveData<RevistaEdicao> = MutableLiveData()
 
-    var allEdicaoArtigos: MediatorLiveData<EdicaoArtigos> = MediatorLiveData()
-    private var _allEdicaoArtigos: LiveData<EdicaoArtigos> = MutableLiveData()
+    var allEdicaoArtigos: MediatorLiveData<List<Artigo>> = MediatorLiveData()
+    private var _allEdicaoArtigos: LiveData<List<Artigo>> = MutableLiveData()
 
 
     init {
@@ -39,6 +41,8 @@ class BancaViewModel(application: Application): AndroidViewModel(application) {
         allRevistas = repository.allRevistas
         allArtigos = repository.allArtigos
         allEdicoes = repository.allEdicoes
+
+        allArtigosFromEdicao = repository.allArtigosEdicao
 
     }
 
