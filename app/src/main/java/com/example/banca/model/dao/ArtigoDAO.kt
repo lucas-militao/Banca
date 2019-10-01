@@ -17,9 +17,10 @@ interface ArtigoDAO{
     suspend fun insert(artigo: Artigo)
 
     @Query("""Select distinct * from artigo_table
-        INNER JOIN artigo_edicao_table ON artigo_table.artigoID = artigo_edicao_table.edicaoID
-        INNER JOIN edicao_table ON edicao_table.edicaoID = artigo_edicao_table.edicaoID
-        WHERE artigo_edicao_table.edicaoID = :id
+        INNER JOIN (Select artigo_edicao_table.artigoID 
+        From edicao_table INNER JOIN artigo_edicao_table ON edicao_table.edicaoID = artigo_edicao_table.edicaoID
+        WHERE edicao_table.edicaoID = :id)
+        AS a ON artigo_table.artigoID = a.artigoID
     """)
     fun queryArtigosFromEdicaoByID(id: Int) : LiveData<List<Artigo>>
 
