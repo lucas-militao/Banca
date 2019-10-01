@@ -33,6 +33,8 @@ class RevistaEdicaoActivity : AppCompatActivity() {
 
         recyclerList.adapter = revistaEdicaoAdapter
 
+        searchField.setHint("Edições pelo id a revista")
+
         searchButton.setOnClickListener {
             try {
                 bancaViewModel.queryRevistaEdicoes(searchField.text.toString().toInt())

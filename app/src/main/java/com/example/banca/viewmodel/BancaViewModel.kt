@@ -28,6 +28,9 @@ class BancaViewModel(application: Application): AndroidViewModel(application) {
     var allEdicaoArtigos: MediatorLiveData<List<Artigo>> = MediatorLiveData()
     private var _allEdicaoArtigos: LiveData<List<Artigo>> = MutableLiveData()
 
+    var allArtigosRevista: MediatorLiveData<List<Artigo>> = MediatorLiveData()
+    private var _allArtigosRevista: LiveData<List<Artigo>> = MutableLiveData()
+
 
     init {
 
@@ -71,6 +74,14 @@ class BancaViewModel(application: Application): AndroidViewModel(application) {
         _allEdicaoArtigos = repository.queryEdicaoArtigos(id)
         allEdicaoArtigos.addSource(_allEdicaoArtigos) {
             allEdicaoArtigos.value = it
+        }
+    }
+
+    fun queryArtigosRevista(id: Int) {
+        allArtigosRevista.removeSource(_allArtigosRevista)
+        _allArtigosRevista = repository.queryArtigosFromRevistaByID(id)
+        allArtigosRevista.addSource(_allArtigosRevista) {
+            allArtigosRevista.value = it
         }
     }
 }

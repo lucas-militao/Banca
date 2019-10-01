@@ -23,6 +23,14 @@ interface ArtigoDAO{
     """)
     fun queryArtigosFromEdicaoByID(id: Int) : LiveData<List<Artigo>>
 
+    @Query("""Select * from artigo_table
+        INNER JOIN artigo_edicao_table ON artigo_table.artigoID = artigo_edicao_table.artigoID
+        INNER JOIN edicao_table ON edicao_table.edicaoID = artigo_edicao_table.edicaoID
+        INNER JOIN revista_table ON revista_table.revistaID = edicao_table.revistaID
+        Where revista_table.revistaID = :id
+    """)
+    fun queryArtigosFromRevistaById(id: Int) : LiveData<List<Artigo>>
+
     @Query("Delete from artigo_table")
     suspend fun deleteAll()
 

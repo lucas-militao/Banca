@@ -42,4 +42,8 @@ class BancaRepository (private val artigoDAO: ArtigoDAO,
         return artigoDAO.queryArtigosFromEdicaoByID(id)
     }
 
+    fun queryArtigosFromRevistaByID(id: Int) : LiveData<List<Artigo>> {
+        return artigoDAO.queryArtigosFromRevistaById(id)
+    }
+
 }

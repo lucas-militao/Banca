@@ -32,6 +32,8 @@ class EdicaoArtigosActivity : AppCompatActivity() {
 
         recyclerList.adapter = edicaoArtigosAdapter
 
+        searchField.setHint("Artigos pelo id da Edição")
+
         searchButton.setOnClickListener {
             try {
                 bancaViewModel.queryEdicaoArtigos(searchField.text.toString().toInt())
